@@ -1,0 +1,239 @@
+.wrapper {
+  position: relative;
+  width: 100%; }
+  .wrapper .inner-wrapper .nav-bg {
+    background: #f7f7f7;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    height: 101vh; }
+    .wrapper .inner-wrapper .nav-bg #pro-heading {
+      position: relative;
+      background: #fff;
+      height: 55px;
+      padding: 16px 5px 16px 11px;
+      display: flex;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 5px; }
+      .wrapper .inner-wrapper .nav-bg #pro-heading input[type="checkbox"] {
+        opacity: .7;
+        transform: scale(1.5);
+        webkit-transform: scale(1.5);
+        cursor: pointer; }
+      .wrapper .inner-wrapper .nav-bg #pro-heading input[type="text"] {
+        border: none;
+        flex: 1;
+        margin: 0px 8px;
+        font-size: 16px; }
+      .wrapper .inner-wrapper .nav-bg #pro-heading i {
+        float: right;
+        margin-top: 5px;
+        margin-right: 5px;
+        opacity: .7;
+        transform: scale(1.5);
+        webkit-transform: scale(1.5); }
+    .wrapper .inner-wrapper .nav-bg .pro-footer {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      align-items: center;
+      padding: 0px 5px;
+      background: #fff;
+      border-top: 1px solid #eee; }
+      .wrapper .inner-wrapper .nav-bg .pro-footer input {
+        margin: 5px 3px; }
+      .wrapper .inner-wrapper .nav-bg .pro-footer i {
+        opacity: .7;
+        font-size: 25px;
+        margin-bottom: 15px; }
+      .wrapper .inner-wrapper .nav-bg .pro-footer .footer {
+        position: relative;
+        text-align: center; }
+        .wrapper .inner-wrapper .nav-bg .pro-footer .footer .fa-caret-square-o-right {
+          float: left;
+          position: absolute;
+          top: 3px;
+          left: 5px; }
+        .wrapper .inner-wrapper .nav-bg .pro-footer .footer .footer-info {
+          float: left;
+          width: 87%;
+          margin-left: 10px;
+          color: #999;
+          display: inline-block;
+          font-size: 12px;
+          margin-top: 8px; }
+          .wrapper .inner-wrapper .nav-bg .pro-footer .footer .footer-info span {
+            font-size: 12px; }
+        .wrapper .inner-wrapper .nav-bg .pro-footer .footer .fa-trash-o {
+          float: right; }
+    .wrapper .inner-wrapper .nav-bg #pro-body .label {
+      margin-left: 10px;
+      font-size: 12px;
+      width: 92px;
+      float: left;
+      text-align: left;
+      opacity: 0.7; }
+    .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder {
+      margin: 5px 10px;
+      width: 100%;
+      display: inline-flex; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate input, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder input {
+        border: none;
+        text-align: center;
+        width: 91%; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate .k-datetimepicker, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder .k-datetimepicker {
+        width: 100%;
+        margin-right: 10px;
+        padding-right: 10px; }
+        .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate .k-datetimepicker .k-select, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder .k-datetimepicker .k-select {
+          width: 80px; }
+          .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate .k-datetimepicker .k-select .k-i-calendar, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder .k-datetimepicker .k-select .k-i-calendar {
+            margin-left: -10px;
+            transform: scale(1.5);
+            webkit-transform: scale(1.5); }
+          .wrapper .inner-wrapper .nav-bg #pro-body .pro-duedate .k-datetimepicker .k-select .k-i-clock, .wrapper .inner-wrapper .nav-bg #pro-body .pro-reminder .k-datetimepicker .k-select .k-i-clock {
+            margin-left: 15px;
+            transform: scale(1.5);
+            webkit-transform: scale(1.5); }
+    .wrapper .inner-wrapper .nav-bg #pro-body .pro-addsubtask {
+      display: inline-block;
+      width: 100%;
+      margin: 5px 10px; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addsubtask span {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+        font-size: 18px;
+        padding: 5px 10px; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addsubtask input {
+        height: 32px;
+        width: calc(100% - 52px);
+        padding-top: 3px;
+        margin-left: -4px; }
+    .wrapper .inner-wrapper .nav-bg #pro-body .pro-addnote {
+      position: relative;
+      margin: 10px; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addnote .note {
+        background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+        background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+        background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+        background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+        background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+        background-size: 100% 100%, 100% 100%, 100% 31px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        line-height: 31px;
+        font-family: Arial, Helvetica, Sans-serif;
+        padding: 8px;
+        width: 95%;
+        height: 130px;
+        margin: 0px 10px;
+        resize: none;
+        overflow: hidden;
+        margin: 0px 10px 5px 0px;
+        width: 100%; }
+        .wrapper .inner-wrapper .nav-bg #pro-body .pro-addnote .note:hover {
+          outline: none; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addnote .fa-external-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 17px; }
+    .wrapper .inner-wrapper .nav-bg #pro-body .pro-addfile {
+      margin: 5px 10px;
+      border: 2px dotted rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      height: 35px;
+      align-items: center;
+      display: flex;
+      position: relative; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addfile span {
+        flex: 1; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addfile i {
+        font-size: 18px;
+        padding: 0px 7px; }
+      .wrapper .inner-wrapper .nav-bg #pro-body .pro-addfile input[type="file"] {
+        position: absolute;
+        height: 20px;
+        right: 62px;
+        top: 3px;
+        opacity: -0.9;
+        width: 17px; }
+
+#noteModal .modal-dialog {
+  background: #fbf9e3; }
+  #noteModal .modal-dialog .note {
+    background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-size: 100% 100%, 100% 100%, 100% 31px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 31px;
+    font-family: Arial, Helvetica, Sans-serif;
+    padding: 8px;
+    width: 95%;
+    height: 130px;
+    margin: 0px 10px;
+    resize: none;
+    overflow: hidden;
+    height: 300px;
+    margin: 0px 10px -20px 0px;
+    width: 100%; }
+    #noteModal .modal-dialog .note:hover {
+      outline: none; }
+
+.k-animation-container .k-calendar {
+  display: block;
+  width: 15.917em; }
+
+.k-animation-container table tr th {
+  background: yellowgreen; }
+
+.k-animation-container ul li {
+  color: #262626; }
+
+.nav-open .nav-bg {
+  overflow-y: auto; }
+
+/* Define keyframe animation */
+@keyframes slideOpen {
+  from {
+    transform: translateX(0px); }
+  to {
+    transform: translateX(300px); } }
+
+@keyframes slideClosed {
+  from {
+    transform: translateX(300px); }
+  to {
+    transform: translateX(0px); } }
+
+/* Apply transform animation */
+.nav-open .wrapper {
+  animation-name: slideOpen;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards; }
+
+.wrapper {
+  animation-name: slideClosed;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  backface-visibility: hidden; }
+
+.overlay {
+  content: '';
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -5;
+  top: 0;
+  left: 0; }
+
+.nav-open .overlay {
+  display: block; }

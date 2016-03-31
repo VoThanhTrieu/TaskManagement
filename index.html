@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="TaskManagementApp">
+<head lang="en">
+
+    <title>Task Management</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--build:css css/styles.min.css-->
+    <link rel="stylesheet" type="text/css" href="dist/css/index.css">
+    <link rel="stylesheet" type="text/css" href="dist/Libs/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/fonts/Fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/listTask.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/TaskContent.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/TaskProperties.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/login.css">
+    
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.rtl.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.silver.min.css"/>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.mobile.all.min.css"/>
+
+   
+    <!--endbuild-->
+
+
+</head>
+<body  ng-controller="TaskManagementCtrl">
+    <div class="container-fluid">
+            <img src="dist/images/shell.jpg">
+            <login login-user='loginUser' lists='Lists'></login>
+
+            <div id="list-Tasks" >
+                <tasklist user-name='username' list-name='listName' selected-obj='selectedObj'
+                tasks='Tasks' total-task='totalTask' today-task='todayTask' due-task='dueTask' count-task='countTask'
+                temp-task='tempTask' selected-task='selectedTask' login-user='loginUser' lists='Lists' 
+                reminded-list='remindedList' search-task='searchTask'></tasklist>
+            </div>
+
+            <div id="Task-Content">
+               
+                <taskcontent selected-obj='selectedObj' selected-task='selectedTask' tasks='Tasks' complete='complete' 
+                complete-label = 'completeLabel' due-task='dueTask' total-task='totalTask' temp-task='tempTask' 
+                login-user='loginUser' reminded-list='remindedList' search-task='searchTask'>
+                </taskcontent>
+            </div>
+
+            <div id="Task-Properties">
+                <taskproperties selected-task='selectedTask' tasks='Tasks' user-name='username' temp-task='tempTask'>
+                </taskproperties>
+            </div>
+
+    </div>
+    <ul id="alert-container" class="controls">
+         <li class="alert" ng-repeat="x in dueTask track by $index">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" ng-click="closeRemindAlert($index)">&times;</a>
+          Reminder: <strong>{{x.taskName}}</strong> is dued on <strong>{{x.dueDate}}</strong>! Please pay attention!
+        </li>
+    </ul>
+
+
+    <!--Start Context Menu -->
+    <ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
+        <li>
+            <i class="fa fa-folder-o"></i>
+            <a tabindex="-1" href="#">Create a Folder</a>
+        </li>
+        <li class="divider"></li>
+        <li data-toggle="modal" data-target="#renameListModal">
+            <i class="fa fa-pencil"></i>
+            <a tabindex="-1" href="#">Rename List</a>
+        </li>
+        <li>
+            <i class="fa fa-user-plus"></i>
+            <a tabindex="-1" href="#">Add People</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <i class="fa fa-envelope-o"></i>
+            <a tabindex="-1" href="#">Email List</a>
+        </li>
+        <li>
+            <i class="fa fa-envelope-o"></i>
+            <a tabindex="-1" href="#">Print List</a>
+        </li>
+            <li class="divider"></li>
+        <li>
+            <i class="fa fa-clone"></i>
+            <a tabindex="-1" href="#">Copy List</a>
+        </li>
+        <li>
+            <i class="fa fa-files-o"></i>
+            <a tabindex="-1" href="#">Duplicate List</a>
+        </li>
+        <li ng-click="removeList(selectedObj)">
+            <i class="fa fa-trash-o"></i>
+            <a tabindex="-1" href="#">Delete List</a>
+        </li>
+    </ul>
+<!--End Context Menu -->
+
+
+     <!--Scripts-->
+<!-- build:js js/main.min.js  -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="dist/Libs/js/kendo.all.min.js"></script>
+    <script src="dist/Libs/js/angular.min.js"></script>
+    <script src="dist/Libs/js/angular-filter.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="dist/Libs/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="app/js/directives/listDirective.js"></script>
+    <script type="text/javascript" src="app/js/directives/taskDirective.js"></script>
+    <script type="text/javascript" src="app/js/directives/propertiesDirective.js"></script>
+    <script type="text/javascript" src="app/js/directives/ngEnterDirective.js"></script>
+    <script type="text/javascript" src="app/js/directives/LogInDirective.js"></script>
+    <script type="text/javascript" src="app/js/app.js"></script>
+    <script type="text/javascript" src="app/js/service/myService.js"></script>
+    <script type="text/javascript" src="app/js/controller/TaskManagementController.js"></script>
+    <script src="app/js/components/contextMenu/contextMenu.js"></script>
+
+    <!-- endbuild -->
+
+ <!--Start Modal Add List-->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div ng-include=" 'app/html/modal.html'  "></div>
+                </div>
+              </div>
+<!--End Modal Add List-->
+
+ <!--Start Modal Add List-->
+            <div id="shareTaskModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div ng-include=" 'app/html/shareTaskModal.html'  "></div>
+                </div>
+              </div>
+<!--End Modal Add List-->
+
+<!--Start Modal Add Note -->
+<div id="noteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-info">{{selectedTask.taskName}}</h4>
+      </div>
+      <div class="modal-body">
+        <textarea row="4" cols="20" class="note text-muted"
+        ng-model="selectedTask.taskNote" ng-enter="updateTask(selectedTask)" ></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Modal Add Note-->
+
+
+ <!--Start Modal Rename List-->
+            <div id="renameListModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div ng-include=" 'app/html/renameListModal.html'  "></div>
+                </div>
+              </div>
+<!--End Modal Rename List-->
+
+
+</body>
+</html>

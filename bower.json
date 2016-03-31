@@ -1,0 +1,28 @@
+{
+  "name": "MPaaS Dashboard",
+  "version": "0.0.0",
+  "authors": [
+    "vothanhtrieu165 <vothanhtrieu165@gmail.com>"
+  ],
+  "description": "MPaaS Dashboard Application",
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15"
+  },
+    "overrides": {
+        "bootstrap": {
+            "main": ["./**/bootstrap.js", "./**/bootstrap.min.js",
+                    "./**/bootstrap.css", "./**/bootstrap.min.css"]
+        }
+    }
+}

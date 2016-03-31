@@ -1,0 +1,26 @@
+login #LoginModal {
+  background: #fafafa; }
+  login #LoginModal .modal-dialog {
+    width: 400px; }
+    login #LoginModal .modal-dialog img {
+      width: 400px;
+      height: 23em; }
+    login #LoginModal .modal-dialog .modal-content {
+      /* background-image: url("../images/plant-vines.jpg"); */
+      position: absolute;
+      top: 0;
+      background: transparent;
+      width: 400px; }
+      login #LoginModal .modal-dialog .modal-content .modal-header span {
+        font-size: xx-large;
+        font-weight: bold;
+        color: #F1100C; }
+      login #LoginModal .modal-dialog .modal-content .modal-body .input-group {
+        margin-bottom: 5px; }
+      login #LoginModal .modal-dialog .modal-content .modal-body span {
+        background: aliceblue;
+        font-size: 14px; }
+      login #LoginModal .modal-dialog .modal-content .modal-footer p {
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 16px; }

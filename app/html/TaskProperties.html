@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+ <div class="wrapper" >
+        <div class="inner-wrapper" >
+        	  <div class="nav-bg">
+
+                    <div id="pro-heading">
+                    	<input type="checkbox" data-toggle="tooltip" title="Mark as completed"
+                       ng-model="selectedTask.completed" ng-click="updateTask(selectedTask)"></input>
+                    	<input type="text" class="text-info" ng-model="selectedTask.taskName" ng-enter="updateTask(selectedTask)"
+                        data-toggle="popover" data-trigger="hover" data-content={{selectedTask.taskName}} data-placement="bottom"></input>
+                    	<i class="fa fa-star-o text-info" data-toggle="tooltip" title="Mark as starred"></i>
+                    </div>
+
+                    <div id="pro-body">
+                             <span class="label label-default">Due Time:</span>
+                            <div class="pro-duedate">
+                                <input class="datetimepicker form-control" type="text" placeholder="set a due date"
+                                ng-model="selectedTask.dueDate" ng-enter="updateTask(selectedTask)" ></input>
+                            </div>
+                            <span class="label label-default">Remind Time:</span>
+                            <div class="pro-reminder">
+                                <input class="datetimepicker form-control" type="text" placeholder="Remind me"
+                                ng-model="selectedTask.remindDate" ng-enter="updateTask(selectedTask)" > </input>
+                            </div>
+
+                            <div class="pro-addsubtask">
+                            	<span class="text-info">+</span>
+                            	<input type="text" placeholder="Add sub task" ></input>
+                            </div>
+
+                            <div class="pro-addnote">
+
+                            	<textarea row="4" cols="20" class="note text-muted"
+                                ng-model="selectedTask.taskNote" ng-enter="updateTask(selectedTask)" ></textarea>
+                            	<i class="fa fa-external-link text-info" title="Open note in full screen" data-toggle="modal" data-target="#noteModal"></i>
+                            </div>
+
+                            <div class="pro-addfile">
+                            	<span class="text-muted">Add a file</span>
+                                <input type="file">
+                            	   <i class="fa fa-paperclip text-muted" data-toggle="tooltip" title="Attach a file"></i>
+                                </input>
+                            	<a href="https://www.dropbox.com">
+                            		<i class="fa fa-dropbox text-muted" data-toggle="tooltip" title="Dropbox"></i>
+                            	</a>
+                            	<i class="fa fa-microphone text-muted" data-toggle="tooltip" title="Add a voice"></i>
+                            </div>
+                    </div>
+                 
+
+                    <div class="pro-footer">
+                    	<input type="text" placeholder="Add a comment.." class="form-control" ng-model="selectedTask.taskComment"
+                        ng-enter="updateTask(selectedTask)" ></input>
+                    	<div class="footer">
+                    		<i id="closeTaskPro" class="fa fa-caret-square-o-right text-info" data-toggle="tooltip" title="Hide detail view"></i>
+                            <div class="footer-info">
+                    		      Created on <span class="text-center text-muted" ng-bind="selectedTask.createDate"></span>
+                            </div>
+                    		<i class="fa fa-trash-o text-info" data-toggle="tooltip" title="Delete task"
+                             ng-click="removeTask(selectedTask)"></i>
+                    	</div>
+                    </div>
+
+                </div>
+                <!--.nav-bg-->
+        </div>
+        <!--.inner-wrapper-->
+    </div>
+    <!--.wrapper-->
+
+
+
+    <div class="overlay" aria-hidden="true"></div>
+<!--.nav-bg-->
+
+<script>
+$(".datetimepicker").kendoDateTimePicker();
+
+$(document).ready(function() {
+  $('#closeTaskPro').click(function() {
+    $('#Task-Properties').removeClass('active');
+    /* $('#Task-Content').removeClass('col-xs-6 col-sm-8 col-md-8');*/
+  });
+   $('[data-toggle="popover"]').popover(); 
+});
+
+</script>
+
+
+
+
+

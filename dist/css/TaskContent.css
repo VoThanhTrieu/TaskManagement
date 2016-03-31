@@ -1,0 +1,131 @@
+#Tasks {
+  display: inline-block;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%; }
+  #Tasks .header-content {
+    height: 45px;
+    background: #668964;
+    position: relative;
+    align-items: center;
+    display: flex; }
+    #Tasks .header-content .list-name {
+      color: #fff;
+      font-weight: bold;
+      padding-left: 10px;
+      flex: 1;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      width: 100px;
+      font-size: 16px; }
+    #Tasks .header-content ul.icon-list {
+      margin-bottom: -5px;
+      display: flex; }
+      #Tasks .header-content ul.icon-list li {
+        text-align: center; }
+        #Tasks .header-content ul.icon-list li a {
+          text-decoration: none; }
+          #Tasks .header-content ul.icon-list li a p {
+            font-size: 12px;
+            opacity: .7; }
+    #Tasks .header-content #sortMenu, #Tasks .header-content #moreMenu {
+      margin-top: -4px;
+      background: #668964;
+      border: none;
+      border-radius: 0px;
+      margin-right: -38px;
+      width: 210px; }
+      #Tasks .header-content #sortMenu li, #Tasks .header-content #moreMenu li {
+        text-align: left;
+        position: relative; }
+        #Tasks .header-content #sortMenu li i, #Tasks .header-content #moreMenu li i {
+          position: absolute;
+          bottom: 7px;
+          padding-left: 10px; }
+        #Tasks .header-content #sortMenu li a, #Tasks .header-content #moreMenu li a {
+          color: #fff;
+          padding-left: 30px; }
+          #Tasks .header-content #sortMenu li a:hover, #Tasks .header-content #moreMenu li a:hover {
+            background: grey; }
+    #Tasks .header-content #moreMenu {
+      margin-right: 0px; }
+  #Tasks .body-content .addtask {
+    position: relative;
+    height: 50px;
+    margin: 14px 10px;
+    padding: 5px 12px;
+    display: flex;
+    overflow: hidden; }
+    #Tasks .body-content .addtask .task-input {
+      background: #f5f5f5;
+      border: none;
+      margin-left: 15px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      width: 85%;
+      color: #262626;
+      margin-top: 8px;
+      flex: 1; }
+    #Tasks .body-content .addtask .addIcon {
+      opacity: .7;
+      position: absolute;
+      margin-top: 13px; }
+    #Tasks .body-content .addtask .fa-calendar-check-o, #Tasks .body-content .addtask .fa-star-o {
+      opacity: .7;
+      margin-top: 13px;
+      margin-right: 10px; }
+  #Tasks .body-content .Task-content {
+    display: block;
+    margin: 5px 10px;
+    height: auto;
+    max-height: 82vh;
+    overflow-x: hidden; }
+    #Tasks .body-content .Task-content .task-item {
+      position: relative;
+      width: 100%;
+      margin: 5px 2px;
+      display: inline-flex;
+      height: 50px;
+      align-items: center; }
+    #Tasks .body-content .Task-content .fa-pencil {
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: -3px; }
+    #Tasks .body-content .Task-content span {
+      margin-left: 17px;
+      margin-right: 10px;
+      overflow: hidden;
+      flex: 1 1 0%;
+      color: #555555;
+      white-space: nowrap;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      width: 110px; }
+      #Tasks .body-content .Task-content span del {
+        color: #D83E0E; }
+    #Tasks .body-content .Task-content input[type="checkbox"] {
+      position: absolute;
+      left: 8px;
+      top: 14px;
+      opacity: 0.7;
+      cursor: pointer;
+      transform: scale(1.5);
+      webkit-transform: scale(1.5); }
+    #Tasks .body-content .Task-content span.dueDate, #Tasks .body-content .Task-content span.completedDueDate {
+      position: absolute;
+      bottom: -2px;
+      right: -8px;
+      font-size: 12px;
+      color: #D83E0E; }
+    #Tasks .body-content .Task-content span.completedDueDate {
+      text-decoration: line-through; }
+  #Tasks .body-content button {
+    margin: 10px 2px; }
+  #Tasks .body-content .task-item-completed {
+    background: #eee; }

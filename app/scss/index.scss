@@ -1,0 +1,221 @@
+
+@mixin reset {
+	*{
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box ;
+		box-sizing: border-box ;
+		color: #fff ;
+		margin: 0;
+		padding: 0;
+		font-size: 14px ;
+		font-weight: 500 ;
+	}
+	ol,ul{
+		list-style: none;
+	}
+	textarea{
+		resize: none;
+	}
+}
+
+@mixin m_transition($number){
+-webkit-transition: width $number ease;
+-moz-transition: width $number ease;
+-o-transition: width $number ease;
+-ms-transition: width $number ease;
+transition: width $number ease;
+}
+
+@mixin div_TaskList{
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+		height: 100vh;
+		display: flex;
+		display: -moz-box;
+		width: 280px;
+		display: -ms-flexbox;
+		display: box;
+		-moz-box-orient: vertical;
+		-o-box-orient: vertical;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		z-index: 3 !important;
+		
+}
+
+@mixin div_TaskContent{
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100vh;
+	position: relative;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-o-box-flex: 1;
+	box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-o-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	z-index: 2;
+}
+
+@mixin div_TaskProperties{
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	right: -30%;
+	margin-right: 0px;
+	display: none;
+	width: 374px;
+	z-index: 4;
+}
+
+
+
+@mixin alert{
+	position: fixed;
+    top: 51px;
+    left: 50%;
+    width: 310px;
+    z-index: 5;
+    transform: translateX(-50%);
+    max-height: 93vh;
+    overflow-x: hidden;
+    height: auto;
+    .alert{
+    	    background: #28791A;
+    		margin: 5px;
+    		.close{
+    			margin-top: -15px;
+    			color: red;
+    		}
+    }
+}
+
+.collapsed{
+	width: 43px !important;
+	@include m_transition(100ms);
+}
+
+.container-fluid{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+body{
+	margin: 0;
+	padding: 0;
+	@include reset;
+	.popover-content{
+        color: #31708F;
+    }
+	.container-fluid{
+		position: relative;
+		/* will-change: width; */
+		display: flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		overflow: hidden;
+		-webkit-transition: all 0.25s ease-out;
+	    -moz-transition: all 0.25s ease-out;
+	    transition: all 0.25s ease-out;
+	    .active{
+	    	right: 0px !important;
+	    	display: block !important;
+	    }
+	    img{
+	    	position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: .7;
+		}
+	}
+
+	#contextMenu{
+		li{
+			display: flex;
+			i{
+				color: #333;
+				margin-top: 5px;
+				margin-left: 5px;
+			}
+			a{
+				padding: 3px 10px;
+			}
+		}
+	}
+
+	.modal-header{
+		p{
+			font-weight: bold;
+			color: brown;
+		}
+	}
+
+}
+
+#list-Tasks{
+	@include div_TaskList;
+}
+
+
+#Task-Content{
+	/* @extend #list-Tasks; */
+	/* background-image: url("../images/shell.jpg"); */
+	@include div_TaskContent;
+}
+#Task-Properties{
+	@include div_TaskProperties;
+}
+
+#alert-container{
+	@include alert;
+}
+
+@media all and (max-width: 900px){
+		#Task-Properties{
+		position: absolute;
+		top: 0;
+	}
+
+    #task-Content{
+    	z-index: 2 !important;
+    }
+
+	#list-Tasks{
+	@include div_TaskList;
+	}
+
+}
+
+@media all and (max-width: 550px){
+	#Task-Content{
+		position: absolute;
+		left: 43px;
+		top: 0;
+		bottom: 0;
+		width: calc(100% - 43px);
+	}
+
+}
+
+@media all and (max-width: 400px){
+
+		#Task-Properties{
+		width: 100%;
+	    }
+
+}

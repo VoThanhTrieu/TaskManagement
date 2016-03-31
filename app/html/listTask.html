@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<div id="lists" role="navigation">
+	<div class="lists-inner" tabindex="0">
+		<div id="search-toolbar">
+			<a href="#" class="toggle-icon">
+				<i class="fa fa-bars fa-2x"></i>
+			</a>
+			<input type="text" class="search-input hidden" aria-label="Search..." ng-model='searchTask' 
+			ng-change="showSearchList()"></input>
+			<i class="fa fa-search search-icon" data-toggle="tooltip" title="Search"></i>
+			<a href="#" data-toggle="tooltip" title="Stop-Search" ng-click="closeSearchTask()">
+				<i class="fa fa-times stop-search-icon hidden"></i>
+			</a>
+		</div>
+
+		<div id="user-toolbar">
+			<a href="#" class="user dropdown" >
+				<div class="user-image">
+					<img src="dist/images/IMG_0001.jpg" alt="user image" class="img-rounded"></img>
+				</div>
+				<span class="dropdown-toggle user-name" data-toggle="dropdown" ng-bind="userName"></span>
+				 <span class="caret dropdown-toggle" data-toggle="dropdown"></span>
+
+
+                  	<!--dropdown Menu-->
+                      <ul class="dropdown-menu" >
+                          <li class="dropdown-header">Last synced 3 hours ago</li>
+                          <li><span>Sync Now</span></li>
+                          <li class="divider"></li>
+                          <li><span>Become a Pro</span></li>
+                          <li><span>Account Setting</span></li>
+                          <li><span>Change Background</span></li>
+                          <li><span>Restore deleted lists</span></li>
+                          <li class="divider"></li>
+                          <li><span>See What's New</span></li>
+                          <li><span>Install the Browser Extension</span></li>
+                           <li><span>Tell Your friends...</span></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">{{loginUser.Email}}</li>
+                          <li ng-click="signOut()"><span>Sign Out</span></li>
+                     </ul>
+
+                <!--End dropdown Menu-->
+
+				<span class="space"></span>
+					<div class="remider-icon" ng-click="showRemindedTasks()">
+						<span class="badge badge-reminder">{{remindedList.length}}</span>
+						<i class="fa fa-bell-o " data-toggle="tooltip" title="Reminder"></i>
+
+					</div>
+					<div class="comment-icon">
+						<span class="badge badge-comment">3</span>
+	                	<i class="fa fa-comment " data-toggle="tooltip" title="Comment"></i>
+
+	                </div>
+
+			</a>
+		</div>
+
+
+		<div class="list-scroll scrollable-menu">
+			
+				<ul class="filter-collection">
+					<li class="slidebar-item">
+						<a href="#" aria-hidden="true">
+							<i class="fa fa-inbox text-success fa-2x"></i>
+							<span class="title">Inbox</span>
+							<span class="badge">0</span>
+						</a>
+					</li>
+					<li class="slidebar-item" ng-click="showTodayDueTask()">
+						<a href="#" aria-hidden="true">
+							<i class="fa fa-calendar-times-o text-warning fa-2x"></i>
+							<span class="title">Today</span>
+							<span class="badge">{{todayTask.length}}</span>
+						</a>
+					</li>
+					<li class="slidebar-item">
+						<a href="#" aria-hidden="true">
+							<i class="fa fa-calendar text-muted fa-2x"></i>
+							<span class="title" >Week</span>
+							<span class="badge">0</span>
+						</a>
+					</li>
+				</ul>
+			
+			
+				<ul id="myContextMenu" class="" >
+                    <li class="slidebar-item" ng-repeat="x in lists track by $index"
+                    ng-click="getListID(x.$id)" ng-dblclick="removeList(x)" data-toggle="tooltip" title="DoubleClick to delete List">
+	                    <a href="#" aria-hidden="true">
+	                        <i class="fa fa-list-ul fa-2x"></i>
+	                        <span class="title" ng-bind="x.listName"></span>
+	                        <span class="badge" >{{(countTask | filter: {ListId: x.$id}).length}}</span>
+		    	        </a>
+		            </li>
+        		</ul>
+        		<ul class="scrollable-menu" >
+		        	<li class="slidebar-action slidebar-item"  data-toggle="modal" data-target="#myModal">
+						<a href="" class="addlist" aria-hidden="true">
+							<i class="fa fa-plus fa-2x"></i>
+							<span class="title">Create New List</span>
+						</a>
+					</li>
+				</ul>
+			
+		</div>
+	</div>
+</div>
+
+
+<script>
+var body = $('body'),
+    divlists = body.find('#list-Tasks'),
+    iconToggle = body.find('.toggle-icon'),
+    iconSearch = body.find('.search-icon'),
+    iconStopSearch = body.find('.stop-search-icon'),
+    inputSearch = body.find('.search-input'),
+    slideItem = body.find('.slidebar-item'),
+    divTaskPro = body.find('#Task-Properties'),
+    divTaskContent = body.find('#Task-Content');
+
+
+
+        iconToggle.on('click', function () {
+            divlists.toggleClass('collapsed');
+        });
+
+
+
+        iconSearch.on('click', function () {
+            iconSearch.addClass('hidden');
+            iconStopSearch.removeClass('hidden');
+            inputSearch.removeClass('hidden');
+            inputSearch.focus();
+        });
+
+        iconStopSearch.on('click', function () {
+        	inputSearch.val();
+            iconStopSearch.addClass('hidden');
+            inputSearch.addClass('hidden');
+            iconSearch.removeClass('hidden');
+
+        });
+
+
+</script>
+

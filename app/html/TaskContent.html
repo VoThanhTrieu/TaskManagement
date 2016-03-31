@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<div id="Tasks" role="main">
+	<div class="header-content">
+		<span class="list-name" ng-bind="selectedObj.listName" 
+		data-toggle="popover" data-trigger="hover" data-content={{selectedObj.listName}} data-placement="bottom"></span>
+		<ul class="text-right list-inline icon-list">
+			<li >
+
+					<a href="#" >
+						<i class="fa fa-user-plus text-danger" data-toggle="modal" data-target="#shareTaskModal"></i>
+						<p>Share</p>
+					</a>
+
+
+			</li>
+
+			<li class="dropdown">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-sort-alpha-asc " ></i>
+					<p>Sort</p>
+				</a>
+
+				<ul id="sortMenu" class="dropdown-menu dropdown-menu-right">
+					<li ng-click="orderByMe('taskName')">
+					  	<i class="fa fa-sort-alpha-asc"></i>
+						<a href="#">Sort Alphabetically</a>
+					</li>
+				    <li ng-click="orderByMe('dueDate')">
+				      	<i class="fa fa-calendar"></i>
+						<a href="#">Sort by Due Date</a>
+					</li>
+				    <li>
+				    	<i class="fa fa-clock-o"></i>
+						<a href="#">Sort by Creation Date</a>
+					</li>
+				    <li class="disabled">
+				    	<i class="fa fa-user"></i>
+				    	<a href="#">Sort by Assignee</a>
+				    </li>
+				    <li>
+					      <i class="fa fa-star-o"></i>
+					      <a href="#">Sort by Priority</a>
+				     </li>
+				</ul>
+
+			</li>
+
+			<li class="dropdown">
+				<a href="" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-ellipsis-h"></i>
+					<p>More</p>
+				</a>
+
+				<ul id="moreMenu" class="dropdown-menu dropdown-menu-right">
+					<li>
+					  	<i class="fa fa-files-o"></i>
+						<a href="#">Duplicate List</a>
+					</li>
+				    <li>
+				      	<i class="fa fa-envelope-o"></i>
+						<a href="#">Email List</a>
+					</li>
+				    <li>
+				    	<i class="fa fa-envelope-o"></i>
+						<a href="#">Email Selected To-do</a>
+					</li>
+				    <li class="disabled">
+				    	<i class="fa fa-print"></i>
+				    	<a href="#">Print List</a>
+				    </li>
+				    <li>
+					      <i class="fa fa-microphone-slash"></i>
+					      <a href="#">Do Not Disturb </a>
+				     </li>
+				     <li ng-click="removeTask(selectedTask)">
+					      <i class="fa fa-trash-o"></i>
+					      <a href="#">Delete Selected To-do</a>
+				     </li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+
+				<!--Start Modal-->
+	            <!-- <div id="myModal" class="modal fade" role="dialog">
+	                <div class="modal-dialog"> -->
+
+	                  <!-- Modal content-->
+	               <!--    <div ng-include=" 'app/html/modal.html'  "></div>
+
+	                </div>
+	              </div> -->
+
+	            <!--End Modal-->
+
+
+
+	<div class="body-content">
+		<div class="well well-sm addtask list-inline">
+			<i class="fa fa-plus text-info  addIcon"></i>
+		    <input type="text" class="task-input" id="additem" placeholder="Add New Task..." ng-model="taskName"
+		    ng-enter="addTask()" ng-focus="resetSlectedTask()"></input>
+		    <i class="fa fa-calendar-check-o text-info "></i>
+		    <i class="fa fa-star-o text-info"></i>
+
+		</div>
+
+
+		<div class="Task-content">
+			<!--SHOW UNCOMPLETED TASKS-->
+		    <div class="task-item form-control" ng-repeat="task in tasks | filter: {completed : 'false' } | 
+		    fuzzy: searchTask| orderBy:myOrderBy" ng-click="getSelectedTask(task)">
+		    	<input type="checkbox" data-toggle="tooltip" title="Mark as completed" ng-model="task.completed"
+		    	ng-change="updateTask(task)" ></input>
+		    	<span>{{task.taskName}}</span>
+		    	<span class="dueDate">{{task.dueDate}}</span>
+		    	<i class="fa fa-pencil text-muted" ng-click="showDetail()"></i>
+
+		    </div>
+
+		    <button type="button" class="btn btn-success" ng-click="showCompletedTask()">{{completeLabel}}</button>
+
+		    <!--SHOW COMPLETED TASKS-->
+		    <div class="task-item form-control task-item-completed" ng-repeat="task in tasks | filter: {completed : 'true' } 
+		    | fuzzy: searchTask | orderBy:myOrderBy" ng-click="getSelectedTask(task)" ng-show="complete">
+		    	<input type="checkbox" data-toggle="tooltip" title="Mark as completed" ng-model="task.completed"
+		    	ng-change="updateTask(task)" ></input>
+		    	<span>
+		    		<del>{{task.taskName}}</del>
+		    	</span>
+		    	<span class="completedDueDate">
+		    		{{task.dueDate}}
+		    	</span>
+		    	<i class="fa fa-pencil text-muted" ng-click="showDetail()"></i>
+
+		    </div>
+
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('.Task-content').dblclick(function() {
+    $('#Task-Properties').addClass('active');
+  });
+  $('.task-input').focus(function() {
+    $('.task-input').val('');
+  });
+
+});
+</script>
+
+
